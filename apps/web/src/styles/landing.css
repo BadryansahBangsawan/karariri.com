@@ -1,0 +1,679 @@
+.karariri {
+  --kr-cream: #f3ede1;
+  --kr-green: #1e4a38;
+  --kr-steel: #5c5a56;
+  --kr-display: "Overpass", sans-serif;
+  --kr-body: "Atkinson Hyperlegible", sans-serif;
+  --kr-bolt: 1.05rem;
+  --kr-rim: inset 0 0 0 0.42rem var(--kr-cream), inset 0 0 0 0.55rem var(--kr-steel);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0 0 4rem;
+  background: var(--kr-cream);
+  color: var(--kr-green);
+  color-scheme: light;
+  font-family: var(--kr-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  caret-color: var(--kr-green);
+  scrollbar-color: var(--kr-green) var(--kr-cream);
+  scrollbar-width: thin;
+}
+
+html:has(.karariri),
+body:has(.karariri) {
+  background: #f3ede1;
+  color: #1e4a38;
+  color-scheme: light;
+  caret-color: #1e4a38;
+  scrollbar-color: #1e4a38 #f3ede1;
+  scrollbar-width: thin;
+}
+
+html:has(.karariri)::-webkit-scrollbar,
+.karariri::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+html:has(.karariri)::-webkit-scrollbar-track,
+.karariri::-webkit-scrollbar-track {
+  background: #f3ede1;
+}
+
+html:has(.karariri)::-webkit-scrollbar-thumb,
+.karariri::-webkit-scrollbar-thumb {
+  background: #1e4a38;
+  border: 2px solid #f3ede1;
+}
+
+.karariri *,
+.karariri *::before,
+.karariri *::after {
+  box-sizing: border-box;
+}
+
+.karariri ::selection {
+  background: var(--kr-green);
+  color: var(--kr-cream);
+}
+
+.karariri :focus {
+  outline: none;
+}
+
+.karariri :focus-visible {
+  outline: 2px solid var(--kr-green);
+  outline-offset: 3px;
+}
+
+.karariri button,
+.karariri input,
+.karariri textarea,
+.karariri select,
+.karariri a {
+  font-family: var(--kr-body);
+  caret-color: var(--kr-green);
+}
+
+.karariri a {
+  color: var(--kr-green);
+}
+
+.karariri a:visited {
+  color: var(--kr-green);
+}
+
+.karariri h1,
+.karariri h2,
+.karariri h3 {
+  margin-block: 1.35em 0.4em;
+  color: var(--kr-green);
+  font-family: var(--kr-display);
+  font-weight: 700;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.karariri h2 {
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+.karariri h3 {
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+}
+
+.karariri p {
+  margin-block: 0 0.9em;
+}
+
+.kr-plate {
+  position: relative;
+  width: 100%;
+  color: var(--kr-green);
+  background: var(--kr-cream);
+  border: 0.2rem solid var(--kr-steel);
+  border-radius: 0;
+  box-shadow: var(--kr-rim), 0 0.12rem 0 var(--kr-steel);
+  transform-origin: 50% 0.9rem;
+}
+
+.kr-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100svh;
+  padding: 1.65rem 1.2rem 1.15rem;
+}
+
+.kr-hero.is-clack,
+.kr-plate.is-clack {
+  animation: kr-clack 0.46s cubic-bezier(0.18, 0.9, 0.22, 1) both;
+}
+
+.kr-plate.is-clack .kr-bolt {
+  animation: kr-bolt-seat 0.46s cubic-bezier(0.18, 0.9, 0.22, 1) both;
+}
+
+@keyframes kr-clack {
+  0% {
+    transform: translateY(-3px);
+  }
+  42% {
+    transform: translateY(2px) scaleY(0.985);
+  }
+  68% {
+    transform: translateY(-0.6px) scaleY(1.008);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes kr-bolt-seat {
+  0% {
+    transform: scale(1.18);
+  }
+  52% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.kr-bolt {
+  position: absolute;
+  z-index: 1;
+  width: var(--kr-bolt);
+  height: var(--kr-bolt);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.kr-bolt svg {
+  display: block;
+  width: var(--kr-bolt);
+  height: var(--kr-bolt);
+}
+
+.kr-plate > .kr-bolt:nth-child(1 of .kr-bolt) {
+  top: 0.72rem;
+  left: 0.72rem;
+}
+
+.kr-plate > .kr-bolt:nth-child(2 of .kr-bolt) {
+  top: 0.72rem;
+  right: 0.72rem;
+}
+
+.kr-plate > .kr-bolt:nth-child(3 of .kr-bolt) {
+  bottom: 0.72rem;
+  left: 0.72rem;
+}
+
+.kr-plate > .kr-bolt:nth-child(4 of .kr-bolt) {
+  bottom: 0.72rem;
+  right: 0.72rem;
+}
+
+.kr-plus {
+  display: block;
+  max-width: 100%;
+  margin: 0.15em 0 0.1em;
+  color: var(--kr-green);
+  font-family: "Overpass Condensed", var(--kr-display);
+  font-size: clamp(3.25rem, 16vw, 6rem);
+  font-stretch: condensed;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-feature-settings: "tnum" 1, "kern" 1;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
+  text-transform: uppercase;
+  text-wrap: nowrap;
+}
+
+.karariri h1.kr-plus,
+.kr-hero .kr-plus {
+  margin-block: 0.2em 0.12em;
+  font-size: clamp(3.25rem, 16vw, 6rem);
+}
+
+.kr-plus button {
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: start;
+  text-transform: inherit;
+  text-wrap: nowrap;
+  cursor: pointer;
+}
+
+.karariri .kr-plus button:focus-visible {
+  outline: 2px solid var(--kr-green);
+  outline-offset: 4px;
+}
+
+.kr-hero > h1 + p:not(.kr-lamp),
+.kr-name {
+  display: block;
+  margin: 0 0 0.65em;
+  font-family: var(--kr-display);
+  font-size: clamp(1.2rem, 3.2vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.kr-hero > h1 + p + p:not(.kr-lamp) {
+  max-width: 22em;
+  margin: 0 0 0.45em;
+  font-family: var(--kr-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-transform: none;
+}
+
+.kr-lamp {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  margin-block: 0.2rem 0.85rem;
+  color: var(--kr-green);
+  font-family: var(--kr-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.kr-lamp::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--kr-green);
+  box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--kr-green) 22%, var(--kr-cream));
+}
+
+.kr-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  width: auto;
+  max-width: 100%;
+  min-height: 3.35rem;
+  margin-top: auto;
+  padding: 0.7rem 2.55rem 0.7rem 1.2rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--kr-green);
+  color: var(--kr-cream);
+  font-family: var(--kr-body);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 1.35rem) 0, 100% 50%, calc(100% - 1.35rem) 100%, 0 100%);
+  cursor: pointer;
+}
+
+.karariri a.kr-chevron,
+.karariri a.kr-chevron:visited {
+  color: var(--kr-cream);
+  text-decoration: none;
+}
+
+.kr-chevron:hover {
+  filter: brightness(1.08);
+}
+
+.kr-chevron:active {
+  transform: translateX(2px);
+}
+
+.karariri .kr-chevron:focus-visible {
+  outline: 2px solid var(--kr-green);
+  outline-offset: 4px;
+}
+
+.kr-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 1.25rem;
+  width: 100%;
+  margin: 0.85rem 0 0;
+  padding: 0.35rem 0 0;
+  font-family: var(--kr-body);
+  font-size: 0.98rem;
+}
+
+.kr-nav a {
+  padding-block: 0.35rem;
+  border-bottom: 1px solid transparent;
+  color: var(--kr-green);
+  text-decoration: none;
+}
+
+.kr-nav a:hover,
+.kr-nav a:focus-visible {
+  border-bottom-color: var(--kr-green);
+}
+
+.kr-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.kr-section {
+  width: min(100% - 1.5rem, 46rem);
+  margin: 1.75rem auto 0;
+}
+
+.kr-beat {
+  padding: 1.35rem 1.2rem 1.4rem;
+}
+
+.kr-section h2,
+.kr-section h3 {
+  margin-block: 0 0.7em;
+}
+
+.kr-rs-figure {
+  margin: 0;
+}
+
+.kr-rs-plan {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  grid-template-rows: minmax(9rem, 1fr) minmax(7.5rem, 0.85fr);
+  grid-template-areas: "hall outdoor" "hall vip";
+  min-height: 18rem;
+  color: var(--kr-green);
+}
+
+.kr-rs-hall {
+  grid-area: hall;
+  border-right: 0.14rem solid var(--kr-green);
+}
+
+.kr-rs-outdoor {
+  grid-area: outdoor;
+  border-bottom: 0.14rem solid var(--kr-green);
+}
+
+.kr-rs-vip {
+  grid-area: vip;
+}
+
+.kr-rs-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  min-width: 0;
+  min-height: 0;
+  padding: 0.9rem 1rem 1.05rem;
+}
+
+.kr-rs-cell svg {
+  display: block;
+  width: 100%;
+  height: 6.5rem;
+  flex: 1 1 auto;
+}
+
+.karariri .kr-rs-cell p {
+  margin: 0;
+  font-family: var(--kr-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.kr-rs-figure figcaption {
+  margin-top: 0.65rem;
+  color: var(--kr-steel);
+  font-family: var(--kr-body);
+  font-size: 0.9rem;
+}
+
+.kr-rs-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.karariri p.kr-rs-sig {
+  margin: 0;
+  padding: 0.85rem 0;
+}
+
+.karariri p.kr-rs-sig:first-child {
+  padding-top: 0;
+}
+
+.kr-rs-sig + .kr-rs-sig {
+  border-top: 0.08rem solid var(--kr-steel);
+}
+
+.kr-rs-sig-name {
+  display: block;
+  color: var(--kr-green);
+  font-family: var(--kr-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.kr-rs-sig-note {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--kr-steel);
+  font-family: var(--kr-body);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.karariri p.kr-rs-range {
+  margin: 1.1rem 0 0;
+  color: var(--kr-green);
+  font-family: var(--kr-body);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.kr-quote {
+  margin: 1.15rem 0 0;
+  padding: 1rem 1.1rem 1.05rem;
+  border: 0.18rem solid var(--kr-steel);
+  box-shadow: var(--kr-rim);
+  color: var(--kr-green);
+  font-family: var(--kr-body);
+  font-size: 1.05rem;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.kr-quote p {
+  margin: 0;
+}
+
+.kr-quote footer,
+.kr-quote cite {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--kr-steel);
+  font-family: var(--kr-body);
+  font-size: 0.92rem;
+  font-style: normal;
+}
+
+.kr-locator {
+  appearance: none;
+  display: block;
+  margin: 0.15rem 0 0.85rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--kr-green);
+  font-family: "Overpass Condensed", var(--kr-display);
+  font-size: clamp(2rem, 8vw, 3.25rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-align: start;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.kr-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  margin: 0 0 1rem;
+  padding: 0.35rem 0.2rem 0.35rem 0;
+  border: 0;
+  border-bottom: 0.12rem solid var(--kr-green);
+  border-radius: 0;
+  background: transparent;
+  color: var(--kr-green);
+  font-family: var(--kr-body);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.kr-copy:hover {
+  color: var(--kr-steel);
+}
+
+.karariri .kr-copy:focus-visible {
+  outline: 2px solid var(--kr-green);
+  outline-offset: 3px;
+}
+
+.kr-hours {
+  width: 100%;
+  margin: 0.5rem 0 1.35rem;
+  border-collapse: collapse;
+  font-family: var(--kr-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.kr-hours th,
+.kr-hours td {
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 1px solid var(--kr-steel);
+  color: var(--kr-green);
+  font-weight: 400;
+  text-align: start;
+  vertical-align: baseline;
+}
+
+.kr-hours th {
+  width: 42%;
+  font-weight: 700;
+}
+
+.kr-photos {
+  display: block;
+  width: fit-content;
+  margin: 1rem 0 0;
+  font-family: var(--kr-body);
+  font-weight: 700;
+}
+
+.kr-colophon {
+  width: min(100% - 1.5rem, 46rem);
+  margin: 2.25rem auto 0;
+  padding: 1.35rem 1.2rem 1.2rem;
+  color: var(--kr-steel);
+  font-family: var(--kr-body);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.kr-colophon p {
+  margin-block: 0 0.7em;
+}
+
+@media (max-width: 420px) {
+  .kr-rs-cell {
+    padding: 0.65rem 0.75rem 0.85rem;
+  }
+
+  .kr-rs-cell svg {
+    height: 4.5rem;
+  }
+
+  .karariri .kr-rs-cell p {
+    font-size: 0.95rem;
+  }
+
+  .kr-rs-sig-name {
+    font-size: 1.18rem;
+  }
+}
+
+@media (min-width: 720px) {
+  .kr-hero {
+    padding: 2.1rem 2.2rem 1.6rem;
+  }
+
+  .kr-section,
+  .kr-colophon {
+    width: min(100% - 3rem, 46rem);
+  }
+
+  .kr-nav {
+    gap: 0.15rem 1.75rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .karariri {
+    padding-bottom: 5rem;
+  }
+
+  .kr-hero {
+    width: min(56rem, 64vw);
+    min-height: calc(100svh - 3.5rem);
+    margin: 1.75rem 0 2.5rem 6vw;
+    padding: 2.6rem 2.9rem 1.9rem;
+    border-radius: 0.2rem;
+  }
+
+  .karariri h1.kr-plus,
+  .kr-hero .kr-plus {
+    font-size: 6rem;
+  }
+
+  .kr-section,
+  .kr-colophon {
+    width: min(100% - 12vw, 46rem);
+    margin-left: 6vw;
+    margin-right: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karariri .kr-plate.is-clack,
+  .karariri .kr-hero,
+  .karariri .kr-plate,
+  .karariri .kr-bolt,
+  .karariri .kr-chevron {
+    animation: none;
+    transition: none;
+  }
+
+  .kr-chevron:active {
+    transform: none;
+  }
+}
