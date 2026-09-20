@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { CafeHero } from "@/components/landing/CafeHero";
 import { ProofDatang } from "@/components/landing/ProofDatang";
 import { RoomsSajian } from "@/components/landing/RoomsSajian";
-import { WayfindingPlate } from "@/components/landing/WayfindingPlate";
 import { karariri, localBusinessJsonLd } from "@/lib/karariri";
 
 import "@/styles/landing.css";
@@ -22,10 +22,10 @@ export const Route = createFileRoute("/")({
 function HomeComponent() {
   return (
     <div className="karariri">
-      <WayfindingPlate />
+      <CafeHero />
       <RoomsSajian />
       <ProofDatang />
-      <footer className="kr-plate kr-colophon">
+      <footer className="cafe-colophon">
         <p>{karariri.ui.ownerLine}</p>
         <p>{karariri.nameOrigin}</p>
         <p>{karariri.ui.footerSource}</p>

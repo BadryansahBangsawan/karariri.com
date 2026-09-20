@@ -17,48 +17,44 @@ export function ProofDatang() {
 
   function copyPlusCode() {
     void navigator.clipboard.writeText(karariri.plusCode).then(
-      () => {
-        setCopied(true);
-      },
-      () => {
-        setCopied(false);
-      },
+      () => setCopied(true),
+      () => setCopied(false),
     );
   }
 
   return (
     <>
-      <section className="kr-section" id="ulasan">
+      <section className="cafe-section" id="ulasan">
         <h2>{karariri.ui.nav.ulasan}</h2>
-        <p>{karariri.ui.ratingLine}</p>
+        <p className="cafe-rating">{karariri.ui.ratingLine}</p>
         {karariri.reviews.map((review) => (
-          <blockquote className="kr-quote" key={review.author}>
+          <blockquote className="cafe-quote" key={review.author}>
             <p>{review.text}</p>
             <footer>{review.author}</footer>
           </blockquote>
         ))}
       </section>
 
-      <section className="kr-section" id="datang">
+      <section className="cafe-section" id="datang">
         <h2>{karariri.ui.nav.datang}</h2>
-        <div className="kr-plate kr-beat">
+        <div className="cafe-visit">
           <address>{karariri.addressLine}</address>
           <button
             type="button"
-            className="kr-locator"
+            className="cafe-plus"
             onClick={copyPlusCode}
             aria-label={karariri.ui.copyPlus}
           >
             {karariri.plusCode}
           </button>
-          <button type="button" className="kr-copy" onClick={copyPlusCode}>
+          <button type="button" className="cafe-copy" onClick={copyPlusCode}>
             {copied ? karariri.ui.copiedPlus : karariri.ui.copyPlus}
           </button>
-          <p aria-live="polite" role="status">
+          <p className="cafe-live" aria-live="polite" role="status">
             {copied ? karariri.ui.copiedPlus : ""}
           </p>
           <p>{karariri.ui.nearPemkab}</p>
-          <table className="kr-hours">
+          <table className="cafe-hours-table">
             <tbody>
               {DAYS.map((day) => (
                 <tr key={day}>
@@ -69,14 +65,14 @@ export function ProofDatang() {
             </tbody>
           </table>
           <a
-            className="kr-chevron"
+            className="cafe-cta cafe-cta-lg"
             href={karariri.mapsDirUrl}
             rel="noopener noreferrer"
           >
             {karariri.ui.ctaRoute}
           </a>
           <a
-            className="kr-photos"
+            className="cafe-photos"
             href={karariri.mapsPlaceUrl}
             rel="noopener noreferrer"
           >

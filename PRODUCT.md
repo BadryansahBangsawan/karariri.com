@@ -41,6 +41,7 @@ Pengunjung datang lewat HP (jaringan island-town). Aksi nyata adalah Google Maps
 - Kategori Maps: Kedai Kopi.
 - Suara: langsung, lokal, tanpa hiperbola “terbaik”.
 - Warna (user pin): ground putih susu / cream; identitas hijau yang agak gelap. Bukan terracotta.
+- Visual (user pin): landing cafe standar, craft bar Fore Coffee. Bukan papan rambu.
 
 ## Evidence on Hand
 
