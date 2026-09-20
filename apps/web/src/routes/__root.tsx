@@ -4,7 +4,12 @@ import { createORPCClient } from "@orpc/client";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
 import type { QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { HeadContent, Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import {
+  HeadContent,
+  Outlet,
+  createRootRouteWithContext,
+  useRouterState,
+} from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { useState } from "react";
 
@@ -24,11 +29,11 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
   head: () => ({
     meta: [
       {
-        title: "my-better-t-app",
+        title: "Karariri Coffee & Eatery",
       },
       {
         name: "description",
-        content: "my-better-t-app is a web application",
+        content: "Kedai kopi di Jl. Hassanudin, Serui Kota.",
       },
     ],
     links: [
@@ -43,24 +48,38 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 function RootComponent() {
   const [client] = useState<AppRouterClient>(() => createORPCClient(link));
   const [orpcUtils] = useState(() => createTanstackQueryUtils(client));
+  const isLanding = useRouterState({
+    select: (s) => s.location.pathname === "/",
+  });
 
   return (
     <>
       <HeadContent />
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
+        defaultTheme="light"
         disableTransitionOnChange
         storageKey="vite-ui-theme"
+        forcedTheme={isLanding ? "light" : undefined}
       >
-        <div className="grid grid-rows-[auto_1fr] h-svh">
-          <Header />
-          <Outlet />
-        </div>
+        {isLanding ? (
+          <div className="min-h-svh">
+            <Outlet />
+          </div>
+        ) : (
+          <div className="grid grid-rows-[auto_1fr] h-svh">
+            <Header />
+            <Outlet />
+          </div>
+        )}
         <Toaster richColors />
       </ThemeProvider>
-      <TanStackRouterDevtools position="bottom-left" />
-      <ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
+      {isLanding ? null : (
+        <>
+          <TanStackRouterDevtools position="bottom-left" />
+          <ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
+        </>
+      )}
     </>
   );
 }
