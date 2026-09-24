@@ -1,24 +1,26 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-20T00:00:00.000Z",
+  "generatedAt": "2026-09-24T00:00:00.000Z",
   "title": "Design System: Karariri",
   "extensions": {
     "colorMeta": {
-      "cream": { "role": "neutral", "displayName": "Cream", "canonical": "#F3EDE1", "tonalRamp": ["#F3EDE1"] },
-      "green": { "role": "primary", "displayName": "Green", "canonical": "#1E4A38", "tonalRamp": ["#1E4A38", "#245C44", "#16382B"] },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#16382B", "tonalRamp": ["#16382B"] },
-      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#3D5C4F", "tonalRamp": ["#3D5C4F"] },
-      "quote": { "role": "neutral", "displayName": "Quote", "canonical": "#FFFDF8", "tonalRamp": ["#FFFDF8"] }
+      "cream": { "role": "neutral", "displayName": "Cream", "canonical": "#FAF6EF", "tonalRamp": ["#FAF6EF"] },
+      "espresso": { "role": "primary", "displayName": "Espresso", "canonical": "#6B3A1F", "tonalRamp": ["#6B3A1F", "#4E2A16"] },
+      "amber": { "role": "accent", "displayName": "Amber", "canonical": "#C9833A", "tonalRamp": ["#C9833A"] },
+      "oat": { "role": "neutral", "displayName": "Oat", "canonical": "#EFE6D6", "tonalRamp": ["#EFE6D6"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#2A160C", "tonalRamp": ["#2A160C"] }
     },
     "typographyMeta": {
-      "display": { "displayName": "Wordmark", "purpose": "Karariri serif lockup." },
-      "headline": { "displayName": "Hook", "purpose": "First-viewport slogan." }
+      "display": { "displayName": "Hero", "purpose": "Kopi Enak / Tempat Nyaman / Sampai Malam." },
+      "headline": { "displayName": "Section", "purpose": "Yang Ada, Dari Kampung ke Cangkir, Tentang." },
+      "title": { "displayName": "Card", "purpose": "Menu card names in Playfair 600." },
+      "body": { "displayName": "Body", "purpose": "DM Sans 300." },
+      "label": { "displayName": "Label", "purpose": "10px uppercase 0.12em." }
     },
-    "shadows": [
-      { "name": "panel", "value": "0 10px 28px rgba(22, 56, 43, 0.12)", "purpose": "Hero, rooms, quotes." }
-    ],
+    "shadows": [],
     "motion": [
-      { "name": "hero-rise", "value": "0.7s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Ilustrasi panel entrance." }
+      { "name": "hero-rise", "value": "0.7s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Hero stagger fade-up on mount." },
+      { "name": "rule", "value": "0.5s scaleX", "purpose": "Amber underline on section titles." }
     ],
     "breakpoints": [
       { "name": "phone", "value": "390px" },
@@ -31,29 +33,30 @@
       "name": "Buka rute",
       "kind": "button",
       "refersTo": "cta",
-      "description": "Green pill; real Google Maps directions link.",
-      "html": "<a class=\"cafe-cta\" href=\"https://www.google.com/maps/dir/?api=1&destination=-1.8717744,136.2388775\" rel=\"noopener noreferrer\">Buka rute</a>",
-      "css": ".cafe-cta { display: inline-flex; min-height: 2.65rem; padding: 0.55rem 1.15rem; border-radius: 999px; background: #1E4A38; color: #F3EDE1; font-weight: 700; text-decoration: none; }"
+      "description": "Espresso rectangle; real Google Maps directions link.",
+      "html": "<a class=\"cafe-btn\" href=\"https://www.google.com/maps/dir/?api=1&destination=-1.8717744,136.2388775\" rel=\"noopener noreferrer\">Buka rute →</a>",
+      "css": ".cafe-btn { display: inline-flex; min-height: 2.85rem; padding: 0.7rem 1.2rem; border-radius: 0; background: #6B3A1F; color: #FAF6EF; font-weight: 500; text-decoration: none; }"
     }
   ],
   "narrative": {
-    "northStar": "Fore-craft cafe homepage",
-    "overview": "Bright Indonesian cafe landing. Cream field, dark green brand, pill CTA, Ilustrasi panels. Fore Coffee craft bar, Karariri facts.",
+    "northStar": "Groundwork artisan cafe",
+    "overview": "Warm artisanal cafe landing. Cream field, espresso brand, amber accents, Playfair + DM Sans, Ilustrasi photographs. Karariri facts.",
     "keyCharacteristics": [
-      "Serif wordmark, sans UI",
-      "Green pill Buka rute",
-      "Ilustrasi instead of stolen photos",
-      "Live hours chip"
+      "Playfair italic wordmark, DM Sans UI",
+      "Espresso square Buka rute",
+      "Ilustrasi stock instead of stolen photos",
+      "Live hours text"
     ],
     "rules": [],
     "dos": [
-      "Do keep Buka rute on the first 390px screen.",
-      "Do use cream #F3EDE1 and green #1E4A38.",
-      "Do label synthetic panels Ilustrasi."
+      "Do keep Buka rute on the first 390px screen (nav).",
+      "Do use cream #FAF6EF, espresso #6B3A1F, amber #C9833A.",
+      "Do label stock photographs Ilustrasi."
     ],
     "donts": [
       "Don't invent phone, WhatsApp, Instagram, or menu prices.",
       "Don't restore the enamel plus-code plate as identity.",
+      "Don't restore Fore green pills.",
       "Don't hotlink Google or press photos."
     ]
   }

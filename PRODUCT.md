@@ -40,8 +40,8 @@ Pengunjung datang lewat HP (jaringan island-town). Aksi nyata adalah Google Maps
 - Nama tampilan: **Karariri**; legal/Maps: **Karariri Coffee & Eatery**.
 - Kategori Maps: Kedai Kopi.
 - Suara: langsung, lokal, tanpa hiperbola “terbaik”.
-- Warna (user pin): ground putih susu / cream; identitas hijau yang agak gelap. Bukan terracotta.
-- Visual (user pin): landing cafe standar, craft bar Fore Coffee. Bukan papan rambu.
+- Warna (user pin): cream hangat `#FAF6EF`, espresso `#6B3A1F`, amber `#C9833A`.
+- Visual (user pin): landing cafe artisan Groundwork — Playfair Display + DM Sans, foto ilustrasi, CTA Buka rute. Bukan papan rambu, bukan Fore green pills.
 
 ## Evidence on Hand
 

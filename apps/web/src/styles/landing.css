@@ -1,32 +1,46 @@
 .karariri {
-  --cafe-cream: #f3ede1;
-  --cafe-green: #1e4a38;
-  --cafe-ink: #16382b;
-  --cafe-muted: #3d5c4f;
-  --cafe-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
-  --cafe-sans: "Manrope", ui-sans-serif, sans-serif;
-  --cafe-radius: 14px;
-  --cafe-shadow: 0 10px 28px rgba(22, 56, 43, 0.12);
+  --background: 35 30% 97%;
+  --foreground: 22 40% 12%;
+  --primary: 22 55% 28%;
+  --primary-foreground: 35 30% 97%;
+  --accent: 38 65% 55%;
+  --surface: 35 25% 91%;
+  --muted-foreground: 22 15% 50%;
+  --border: 35 20% 82%;
+  --font-serif: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, sans-serif;
+  --cream: hsl(35 30% 97%);
+  --ink: hsl(22 40% 12%);
+  --espresso: hsl(22 55% 28%);
+  --amber: hsl(38 65% 55%);
+  --oat: hsl(35 25% 91%);
+  --mute: hsl(22 15% 50%);
+  --line: hsl(35 20% 82%);
+  --ease: 0.2s ease;
   box-sizing: border-box;
   width: 100%;
   min-height: 100svh;
   margin: 0;
-  padding: 0 0 4rem;
-  background: var(--cafe-cream);
-  color: var(--cafe-ink);
+  background: var(--cream);
+  color: var(--ink);
   color-scheme: light;
-  font-family: var(--cafe-sans);
+  font-family: var(--font-sans);
   font-size: 1.0625rem;
-  line-height: 1.55;
-  caret-color: var(--cafe-green);
-  scrollbar-color: var(--cafe-green) var(--cafe-cream);
+  font-weight: 400;
+  line-height: 1.6;
+  caret-color: var(--espresso);
+  scrollbar-color: var(--espresso) var(--cream);
   scrollbar-width: thin;
+}
+
+html:has(.karariri) {
+  scroll-behavior: smooth;
 }
 
 html:has(.karariri),
 body:has(.karariri) {
-  background: #f3ede1;
-  color: #16382b;
+  background: #faf6ef;
+  color: #2a160c;
   color-scheme: light;
 }
 
@@ -37,8 +51,8 @@ body:has(.karariri) {
 }
 
 .karariri ::selection {
-  background: var(--cafe-green);
-  color: var(--cafe-cream);
+  background: var(--espresso);
+  color: var(--cream);
 }
 
 .karariri :focus {
@@ -46,334 +60,717 @@ body:has(.karariri) {
 }
 
 .karariri :focus-visible {
-  outline: 2px solid var(--cafe-green);
+  outline: 2px solid var(--espresso);
   outline-offset: 3px;
 }
 
 .karariri a {
-  color: var(--cafe-green);
+  color: var(--espresso);
 }
 
 .karariri a:visited {
-  color: var(--cafe-green);
+  color: var(--espresso);
+}
+
+.karariri img {
+  display: block;
+  max-width: 100%;
 }
 
 .karariri h1,
 .karariri h2,
 .karariri h3 {
-  margin-block: 1.4em 0.45em;
-  color: var(--cafe-ink);
-  font-family: var(--cafe-sans);
+  color: var(--ink);
+  font-family: var(--font-serif);
   font-weight: 700;
-  line-height: 1.15;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
-.karariri h2 {
-  font-size: clamp(1.45rem, 3vw, 2rem);
+.cafe-wrap {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
 }
 
-.karariri p {
-  margin-block: 0 0.9em;
+.cafe-label {
+  margin: 0;
+  color: var(--mute);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
-.cafe-bar {
+.cafe-tag {
+  color: var(--amber);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cafe-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.78rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--espresso);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.cafe-chip-amber {
+  border-color: hsl(38 65% 55% / 0.45);
+  color: var(--espresso);
+}
+
+.cafe-chip-on-dark {
+  border-color: hsl(35 30% 97% / 0.28);
+  color: var(--cream);
+}
+
+.cafe-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.85rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--espresso);
+  border-radius: 0;
+  background: var(--espresso);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), border-color var(--ease),
+    transform var(--ease);
+}
+
+.karariri a.cafe-btn,
+.karariri a.cafe-btn:visited {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.cafe-btn:hover {
+  background: hsl(22 55% 22%);
+}
+
+.cafe-btn-ghost {
+  background: transparent;
+  color: var(--espresso);
+}
+
+.karariri a.cafe-btn-ghost,
+.karariri a.cafe-btn-ghost:visited {
+  color: var(--espresso);
+}
+
+.cafe-btn-ghost:hover {
+  background: var(--espresso);
+  color: var(--cream);
+}
+
+.karariri a.cafe-btn-ghost:hover {
+  color: var(--cream);
+}
+
+.cafe-btn-cream {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--espresso);
+}
+
+.karariri a.cafe-btn-cream,
+.karariri a.cafe-btn-cream:visited {
+  color: var(--espresso);
+}
+
+.cafe-btn-cream:hover {
+  background: var(--oat);
+}
+
+.cafe-btn-outline {
+  background: transparent;
+  color: var(--espresso);
+}
+
+.karariri a.cafe-btn-outline,
+.karariri a.cafe-btn-outline:visited {
+  color: var(--espresso);
+}
+
+.cafe-btn-outline:hover {
+  background: var(--espresso);
+  color: var(--cream);
+}
+
+.karariri a.cafe-btn-outline:hover {
+  color: var(--cream);
+}
+
+.cafe-btn-on-dark {
+  background: transparent;
+  border-color: hsl(35 30% 97% / 0.45);
+  color: var(--cream);
+}
+
+.karariri a.cafe-btn-on-dark,
+.karariri a.cafe-btn-on-dark:visited {
+  color: var(--cream);
+}
+
+.cafe-btn-on-dark:hover {
+  background: var(--cream);
+  color: var(--espresso);
+  border-color: var(--cream);
+}
+
+.karariri a.cafe-btn-on-dark:hover {
+  color: var(--espresso);
+}
+
+.cafe-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(1.85rem, 4vw, 2.85rem);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.cafe-heading-center {
+  align-items: center;
+  text-align: center;
+}
+
+.cafe-rule {
+  display: block;
+  width: 4.25rem;
+  height: 2px;
+  background: var(--amber);
+  transform-origin: left center;
+}
+
+.cafe-heading-center .cafe-rule {
+  transform-origin: center;
+}
+
+.cafe-caption {
+  margin: 0.45rem 0 0;
+  color: var(--mute);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ——— Nav ——— */
+.cafe-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: hsl(35 30% 97% / 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid hsl(35 20% 82% / 0.55);
+}
+
+.cafe-nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.85rem 1.15rem;
+  gap: 1rem;
+  min-height: 4.1rem;
+}
+
+.cafe-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  color: var(--espresso);
+  text-decoration: none;
+}
+
+.karariri a.cafe-brand,
+.karariri a.cafe-brand:visited {
+  color: var(--espresso);
+  text-decoration: none;
 }
 
 .cafe-wordmark {
   margin: 0;
-  color: var(--cafe-green);
-  font-family: var(--cafe-serif);
+  color: var(--espresso);
+  font-family: var(--font-serif);
   font-size: 1.45rem;
+  font-style: italic;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1;
 }
 
-.cafe-cta {
+.cafe-brand-icon {
+  color: var(--amber);
+  flex-shrink: 0;
+}
+
+.cafe-nav-links {
+  display: none;
+  align-items: center;
+  gap: 1.65rem;
+}
+
+.cafe-nav-links a {
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+.karariri .cafe-nav-links a:visited {
+  color: var(--ink);
+}
+
+.cafe-nav-links a:hover {
+  color: var(--espresso);
+}
+
+.cafe-nav-end {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cafe-nav-cta {
+  display: inline-flex;
+  min-height: 2.45rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.cafe-burger {
+  appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.65rem;
-  padding: 0.55rem 1.15rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
   border: 0;
-  border-radius: 999px;
-  background: var(--cafe-green);
-  color: var(--cafe-cream);
-  font-family: var(--cafe-sans);
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.2;
-  text-decoration: none;
+  background: transparent;
+  color: var(--espresso);
+  cursor: pointer;
 }
 
-.karariri a.cafe-cta,
-.karariri a.cafe-cta:visited {
-  color: var(--cafe-cream);
-  text-decoration: none;
+.cafe-drawer {
+  display: none;
+  padding: 0.25rem 0 1.15rem;
 }
 
-.cafe-cta:hover {
-  filter: brightness(1.08);
+.cafe-drawer.is-open {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.cafe-cta-lg {
-  min-height: 3.1rem;
-  padding: 0.7rem 1.4rem;
+.cafe-drawer a {
+  padding: 0.7rem 0;
+  color: var(--ink);
   font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
 }
 
+.karariri .cafe-drawer a:visited {
+  color: var(--ink);
+}
+
+.cafe-drawer .cafe-btn {
+  margin-top: 0.85rem;
+  width: fit-content;
+}
+
+/* ——— Hero ——— */
 .cafe-hero {
-  padding: 0.4rem 1.15rem 1.5rem;
+  min-height: 100svh;
+  padding-bottom: 3.5rem;
+}
+
+.cafe-hero-bleed {
+  position: relative;
+  height: 68vh;
+  min-height: 16rem;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.cafe-hero-bleed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.cafe-hero-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(250, 246, 239, 1) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.cafe-hero-copy {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100% - 2rem, 46rem);
+  margin: -2.5rem auto 0;
+  text-align: center;
+}
+
+.cafe-hero-copy .cafe-label {
+  margin-bottom: 0.85rem;
 }
 
 .cafe-hero h1 {
-  margin: 0 0 0.65rem;
-  font-size: clamp(1.7rem, 7vw, 2.6rem);
-  font-weight: 800;
+  margin: 0;
+  font-size: clamp(2.6rem, 7vw, 6.875rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.12;
+  line-height: 0.96;
+}
+
+.cafe-accent {
+  color: var(--amber);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.cafe-hero-sub {
+  max-width: 36rem;
+  margin: 1.15rem 0 0;
+  color: var(--ink);
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.cafe-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+
+.cafe-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .cafe-hours {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 1rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--cafe-green) 12%, var(--cafe-cream));
-  color: var(--cafe-green);
-  font-size: 0.92rem;
-  font-weight: 600;
+  margin: 0.85rem 0 0;
+  color: var(--espresso);
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
-.cafe-shot {
-  position: relative;
-  display: block;
-  width: 100%;
-  min-height: 11.5rem;
-  margin: 1.15rem 0 0;
-  overflow: hidden;
-  border-radius: var(--cafe-radius);
-  background: var(--cafe-green);
-  box-shadow: var(--cafe-shadow);
-}
-
-.cafe-shot-art {
-  display: block;
-  width: 100%;
-  height: 11.5rem;
-}
-
-.cafe-shot figcaption {
-  position: absolute;
-  right: 0.75rem;
-  bottom: 0.55rem;
-  color: var(--cafe-cream);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.cafe-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.2rem 1.1rem;
-  padding: 0 1.15rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.cafe-nav a {
-  padding-block: 0.3rem;
-  text-decoration: none;
-}
-
-.cafe-nav a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+/* ——— Menu ——— */
+.karariri section[id] {
+  scroll-margin-top: 4.6rem;
 }
 
 .cafe-section {
-  width: min(100% - 2.3rem, 42rem);
-  margin: 2.25rem auto 0;
+  padding: 4.25rem 0;
 }
 
-.cafe-section h2 {
-  margin-block: 0 0.85rem;
+.cafe-menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
 
-.cafe-rooms {
+.cafe-card {
+  background: var(--oat);
+  border: 1px solid transparent;
+  transition: border-color var(--ease);
+}
+
+.cafe-card:hover {
+  border-color: var(--espresso);
+}
+
+.cafe-card-shot {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.cafe-card-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--ease);
+}
+
+.cafe-card:hover .cafe-card-shot img {
+  transform: scale(1.02);
+}
+
+.cafe-card-body {
+  padding: 1.15rem 1.15rem 1.3rem;
+}
+
+.cafe-card h3 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.cafe-card p {
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+  font-weight: 300;
+  font-size: 0.98rem;
+}
+
+/* ——— Rooms strip ——— */
+.cafe-strip {
+  padding: 3.25rem 0;
+  background: hsl(38 65% 55% / 0.15);
+}
+
+.cafe-strip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.25rem;
+}
+
+.cafe-strip h3 {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cafe-strip p {
+  margin: 0;
+  color: var(--espresso);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ——— Story splits ——— */
+.cafe-split {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.cafe-split p {
+  margin: 0 0 1rem;
+  font-weight: 300;
+}
+
+.cafe-quote {
+  margin: 0 0 1.15rem;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.cafe-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.15rem 0 1.4rem;
+}
+
+.cafe-stack {
   display: grid;
   gap: 0.85rem;
 }
 
-.cafe-room {
-  margin: 0;
+.cafe-stack-a,
+.cafe-stack-b {
   overflow: hidden;
-  border-radius: var(--cafe-radius);
-  background: color-mix(in srgb, var(--cafe-green) 10%, var(--cafe-cream));
-  box-shadow: var(--cafe-shadow);
 }
 
-.cafe-room-art {
-  display: block;
+.cafe-stack-a img,
+.cafe-stack-b img {
   width: 100%;
-  height: 7.5rem;
+  height: 16rem;
+  object-fit: cover;
 }
 
-.cafe-room figcaption {
-  padding: 0.75rem 0.9rem 0.9rem;
+.cafe-stack-b {
+  width: 78%;
+  justify-self: end;
+  margin-top: -2.5rem;
 }
 
-.cafe-room h3 {
-  margin: 0 0 0.2rem;
-  font-size: 1.05rem;
+.cafe-about-shot img {
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
 }
 
-.cafe-room p {
-  margin: 0;
-  color: var(--cafe-muted);
-  font-size: 0.88rem;
+/* ——— Gallery ——— */
+.cafe-gallery {
+  display: flex;
+  height: 280px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
 }
 
-.cafe-drink {
+.cafe-gallery img {
+  flex: 1 0 42%;
+  width: 42%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform var(--ease);
+}
+
+.cafe-gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* ——— Space ——— */
+.cafe-space {
+  background: var(--oat);
+}
+
+.cafe-space-inner {
+  max-width: 38rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cafe-space-inner p {
+  margin: 0 auto 1.25rem;
+  font-weight: 300;
+}
+
+.cafe-space .cafe-chips {
+  justify-content: center;
+}
+
+/* ——— Testimonials ——— */
+.cafe-quotes {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0.9rem;
-  align-items: center;
-  margin: 0 0 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--cafe-green) 18%, var(--cafe-cream));
+  gap: 1rem;
 }
 
-.cafe-drink:last-of-type {
-  margin-bottom: 0.4rem;
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-.cafe-drink-art {
-  width: 5.5rem;
-  height: 5.5rem;
-  border-radius: var(--cafe-radius);
-  background: var(--cafe-green);
-}
-
-.cafe-drink h3 {
-  margin: 0 0 0.25rem;
-  font-size: 1.15rem;
-}
-
-.cafe-drink p {
+.cafe-testimonial {
   margin: 0;
-  color: var(--cafe-muted);
+  padding: 1.35rem 1.25rem 1.3rem;
+  background: var(--oat);
 }
 
-.cafe-range {
-  margin: 0.85rem 0 0;
-  color: var(--cafe-ink);
+.cafe-testimonial p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.45;
 }
 
-.cafe-rating {
-  margin: 0 0 1rem;
+.cafe-testimonial footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 1.05rem;
+}
+
+.cafe-testimonial cite {
+  color: var(--mute);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cafe-stars {
+  display: flex;
+  gap: 0.18rem;
+  color: var(--amber);
+}
+
+/* ——— Find us ——— */
+.cafe-find {
+  padding: 4.75rem 0 4.25rem;
+  background: var(--espresso);
+  color: var(--cream);
+  text-align: center;
+}
+
+.cafe-find h2 {
+  margin: 0 0 0.85rem;
+  color: var(--cream);
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-style: italic;
   font-weight: 700;
 }
 
-.cafe-quote {
-  margin: 0 0 1rem;
-  padding: 1.05rem 1.1rem;
-  border: 0;
-  border-radius: var(--cafe-radius);
-  background: #fffdf8;
-  box-shadow: var(--cafe-shadow);
+.cafe-find p {
+  margin: 0 auto 1.5rem;
+  color: hsl(35 30% 97% / 0.86);
+  font-weight: 300;
 }
 
-.cafe-quote p {
-  margin: 0;
-}
-
-.cafe-quote footer {
-  margin-top: 0.7rem;
-  color: var(--cafe-muted);
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.cafe-visit {
-  display: grid;
-  gap: 0.35rem;
-}
-.cafe-visit .cafe-cta {
-  width: fit-content;
-  margin-top: 0.5rem;
-}
-
-.cafe-visit address {
-  font-style: normal;
+.cafe-find-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
 }
 
 .cafe-plus {
   appearance: none;
-  margin: 0.2rem 0 0;
+  margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--cafe-green);
-  font-family: var(--cafe-serif);
-  font-size: clamp(1.8rem, 8vw, 2.6rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  text-align: start;
+  color: var(--cream);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
   cursor: pointer;
-}
-
-.cafe-copy {
-  appearance: none;
-  width: fit-content;
-  margin: 0.35rem 0 0.85rem;
-  padding: 0;
-  border: 0;
-  border-bottom: 1.5px solid var(--cafe-green);
-  background: transparent;
-  color: var(--cafe-green);
-  font-family: var(--cafe-sans);
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.cafe-hours-table {
-  width: 100%;
-  margin: 0.75rem 0 1.15rem;
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
-}
-
-.cafe-hours-table th,
-.cafe-hours-table td {
-  padding: 0.45rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--cafe-green) 16%, var(--cafe-cream));
-  text-align: start;
-  font-weight: 400;
-}
-
-.cafe-hours-table th {
-  width: 42%;
-  font-weight: 700;
-}
-
-.cafe-photos {
-  display: block;
-  width: fit-content;
-  margin: 1rem 0 0;
-  font-weight: 700;
 }
 
 .cafe-live {
@@ -384,84 +781,132 @@ body:has(.karariri) {
   clip-path: inset(50%);
 }
 
-.cafe-colophon {
-  width: min(100% - 2.3rem, 42rem);
-  margin: 2.75rem auto 0;
-  color: var(--cafe-muted);
-  font-size: 0.92rem;
+/* ——— Footer ——— */
+.cafe-footer {
+  padding: 2.1rem 0 2.4rem;
+  background: var(--espresso);
+  color: hsl(35 30% 97% / 0.78);
+  border-top: 1px solid hsl(35 30% 97% / 0.12);
 }
 
-.cafe-colophon p {
-  margin-block: 0 0.65em;
+.cafe-footer-mark {
+  margin: 0 0 0.45rem;
+  color: var(--amber);
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 600;
 }
 
-@keyframes cafe-rise {
-  from {
-    opacity: 0.35;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.cafe-shot {
-  animation: cafe-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+.cafe-footer p {
+  margin: 0 0 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 300;
 }
 
 @media (min-width: 720px) {
-  .cafe-bar,
-  .cafe-hero,
-  .cafe-nav {
-    padding-inline: 2rem;
+  .cafe-nav-links {
+    display: flex;
   }
 
-  .cafe-hero h1 {
-    max-width: 16ch;
+  .cafe-nav-cta {
+    min-height: 2.85rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.92rem;
   }
 
-  .cafe-shot,
-  .cafe-shot-art {
-    min-height: 16rem;
-    height: 16rem;
+  .cafe-burger {
+    display: none;
   }
 
-  .cafe-rooms {
-    grid-template-columns: 1fr 1fr 1fr;
+  .cafe-drawer,
+  .cafe-drawer.is-open {
+    display: none;
+  }
+
+  .cafe-menu-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .cafe-strip-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cafe-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.25rem;
+  }
+
+  .cafe-split-flip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cafe-split-flip .cafe-split-copy {
+    order: 1;
+  }
+
+  .cafe-split-flip .cafe-about-shot {
+    order: 2;
+  }
+
+  .cafe-stack-a img {
+    height: 18rem;
+  }
+
+  .cafe-stack-b img {
+    height: 14rem;
+  }
+
+  .cafe-about-shot img {
+    height: 32rem;
+  }
+
+  .cafe-gallery img {
+    flex-basis: 20%;
+    width: 20%;
+  }
+
+  .cafe-quotes {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.15rem;
+  }
+
+  .cafe-hero-copy {
+    margin-top: -3.5rem;
   }
 }
 
 @media (min-width: 1440px) {
-  .cafe-bar,
-  .cafe-hero,
-  .cafe-nav,
-  .cafe-section,
-  .cafe-colophon {
-    width: min(100% - 12vw, 68rem);
-    margin-inline: auto;
-    padding-inline: 0;
+  .cafe-wrap {
+    width: min(100% - 8vw, 76rem);
   }
 
-  .cafe-hero {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 2.5rem;
-    align-items: end;
+  .cafe-hero-bleed {
+    height: 68vh;
   }
 
-  .cafe-shot {
-    margin: 0;
-    min-height: 22rem;
-  }
-
-  .cafe-shot-art {
-    height: 22rem;
+  .cafe-stack-b {
+    margin-top: -3.5rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cafe-shot {
-    animation: none;
+  html:has(.karariri) {
+    scroll-behavior: auto;
+  }
+
+  .karariri *,
+  .karariri *::before,
+  .karariri *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cafe-card:hover .cafe-card-shot img,
+  .cafe-gallery img:hover {
+    transform: none;
   }
 }
